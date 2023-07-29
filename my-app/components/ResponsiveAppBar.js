@@ -8,19 +8,19 @@ const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 import Link from 'next/link';
 import styled from "styled-components";
 
-
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 export default function ResponsiveAppBar() {
     const navItems = [
         { name: 'Home', path: '/' },
-        { name: 'University', path: '/university' },
-        { name: 'Blog', path: '/blog' },
-        { name: 'Culture', path: '/culture' },
-        { name: 'Hobbies', path: '/hobbies' },
+        { name: 'Profile', path: '/profile' },
+        { name: 'Logout', path: '/logout' },
+
     ];
 
     return (
-        <AppBar position = "absolute" style = {{background: "#FFFFFF", boxShadow: "none", alignItems: "center"}}>
+        <AppBar position = "absolute"  style = {{background: "#FFFFFF", boxShadow: "none", alignItems: "center", top: "10px", left: "10px", right: "10px", zIndex: 1}}>
+
             <nav>
                 <ul>
                     {navItems.map((item) => (
