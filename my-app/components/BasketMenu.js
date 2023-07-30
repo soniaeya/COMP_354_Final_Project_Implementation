@@ -4,10 +4,58 @@ import styled from "styled-components";
 import Button from "@mui/material/Button";
 import {TextField} from "@mui/material";
 
-const BasketMenu = () => {
+const BasketMenu = ({username}) => {
     const [showCustomMenu, setShowCustomMenu] = useState(false);
     const [showEmptyMenu, setShowEmptyMenu] = useState(false);
     const [showInitialMenu, setShowInitialMenu] = useState(true);
+
+    const [basketDict, setBasketDict] = useState([{"guest": "basket1"}, {"sonia": "basket2"}])
+    const [newBasketText, setNewBasketText] = useState('');
+
+    const [loadBasketText, setLoadBasketText] = useState('');
+
+    const objectExists = (key, value) => {
+        return basketDict.some(item => item[key] === value);
+    };
+
+    //when press enter key
+    //create new bakset
+    const nameCustomBasket = (event) => {
+        if (event.key === 'Enter') {
+
+            if (objectExists(username, event.target.value)){
+                alert("The account '" + username+ " already has a basket called: "+event.target.value+"\n\nPlease load the basket by choosing the appropriate option!")
+            }
+            else{
+                const newBasket = {username:event.target.value}
+                setBasketDict([...basketDict, newBasket]);
+                alert("The account '" + username+ "' has successfully created the following basket: "+event.target.value+"\n\nHappy Shopping!")
+            }
+
+        }
+    };
+    const loadCustomBasket = (event) => {
+
+        const tryLoadDict = {username: event.target.value};
+
+        if (event.key === 'Enter') {
+            if (objectExists(username, event.target.value)){
+                alert("The account '" + username+ "' has successfully loaded the basket named: "+event.target.value)
+            }
+            else{
+                alert("The account '" + username+ "' doesn't have a basket called '"+event.target.value+"'\n\nPlease try again!")
+            }
+        }
+    };
+
+
+    const handleLoadBasketTextChange = (event) => {
+        setLoadBasketText(event.target.value);
+    };
+    const handleNewBasketTextChange = (event) => {
+        setNewBasketText(event.target.value);
+    };
+
 
     const handleEmptyClick = () => {
         if (showEmptyMenu == false){
@@ -57,7 +105,9 @@ const BasketMenu = () => {
                     <div style={{ position: "absolute", padding: "5px", top: "10px"}}>
                         New custom basket name:
                     </div>
-                    <StyledTextfield id="standard-basic" label="Enter Basket Name" variant="outlined" />
+                    <StyledTextfield value={newBasketText} onChange={handleNewBasketTextChange} onKeyDown={nameCustomBasket} id="standard-basic" label="Enter Basket Name" variant="outlined" />
+
+
                 </EmptyNameBasketMenu>
             }
             {showCustomMenu &&
@@ -65,7 +115,8 @@ const BasketMenu = () => {
                     <div style={{ position: "absolute", padding: "5px", top: "10px"}}>
                         Load from the following basket:
                     </div>
-                    <StyledTextfield id="standard-basic" label="Enter Basket Name" variant="outlined" />
+                    <StyledTextfield value={loadBasketText} onChange={handleLoadBasketTextChange} onKeyDown={loadCustomBasket} id="standard-basic" label="Enter Basket Name" variant="outlined" />
+
 
                 </ LoadCustomBasketMenu>
             }
@@ -172,6 +223,8 @@ const CustomButton = styled(Button)`
   &:hover {
     background-color: #F77D54;
 `
+
+
 
 const StyledTextfield = styled(TextField)`
   top: 10px;

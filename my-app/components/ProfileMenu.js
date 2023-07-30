@@ -42,7 +42,7 @@ const ProfileMenu = ({isloggedin, changeLogin, changeUser}) => {
     };
 
     const handleLogout = (event) => {
-
+        changeUser("guest");
         changeLogin(false);
 
     };

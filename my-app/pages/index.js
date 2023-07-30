@@ -60,7 +60,7 @@ export default function Home() {
     <>
         <BuyButton></BuyButton>
         <ShoppingCartIcon  onClick={handleClick} style={{zIndex: 999, position: "absolute", top: 30, left: 1280}}/>
-        {showBasket && <BasketMenu/>}
+        {showBasket && <BasketMenu username={username}/>}
         <ResponsiveAppBar showCouponMenu={showCouponMenu} changeProfileMenu={changeProfileMenu} style={{zIndex: -1}}></ResponsiveAppBar>
 
         {showCoupons && <Coupons/>}
