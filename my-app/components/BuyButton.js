@@ -2,8 +2,6 @@ import React, {useState} from 'react';
 import styled from "styled-components";
 import Button from '@mui/material/Button';
 import ClearIcon from '@mui/icons-material/Clear';
-import Basket from "@/components/Basket";
-import SuggestionsPopup from "@/components/SuggestionsPopup";
 const BuyButton = () => {
     const [showSuggestions, setShowSuggestions] = useState(false);
     const handleClick = () => {
@@ -45,6 +43,8 @@ const StyledButton = styled(Button)`
   order: 999;
   top: 600px;
   left: 1200px;
+  &:hover {
+    background-color: #F77D54;
 `
 
 const Content = styled.div`

@@ -2,7 +2,7 @@ import React from 'react';
 import styled from "styled-components";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
-const Second = () => {
+const Dashboard = () => {
     return (
         <StyledPageContainer>
             <Burger></Burger>
@@ -10,39 +10,37 @@ const Second = () => {
                 <div style={{color: "black", fontSize: 28, alignItems: "center", justifyContent: "center", display: "flex"}}> Today's Deal</div>
             </Content>
 
-            <Time style={{marginLeft: 125}}>
+            <Days style={{marginLeft: 125}}>
                 <div style={{color: "white", fontSize: 20, alignItems: "center", justifyContent: "center", display: "flex"}}>
                     <div style={{position: "relative", top: 10}}>
                         &nbsp;&nbsp;&nbsp;&nbsp;2<br/>DAYS
                     </div>
                 </div>
-            </Time>
+            </Days>
 
-            <Time style={{marginLeft: 5}}>
+            <Hours style={{marginLeft: 5}}>
                 <div style={{color: "white", fontSize: 20, alignItems: "center", justifyContent: "center", display: "flex"}}>
                     <div style={{position: "relative", top: 10}}>
                         &nbsp;&nbsp;&nbsp;&nbsp;20<br/>HOURS
                     </div>
                 </div>
-            </Time>
-            <Time style={{marginLeft: 5}}>
+            </Hours>
+            <Min style={{marginLeft: 5}}>
                 <div style={{color: "white", fontSize: 20, alignItems: "center", justifyContent: "center", display: "flex"}}>
                     <div style={{position: "relative", top: 10}}>
                         &nbsp;&nbsp;15<br/>MIN
                     </div>
                 </div>
-            </Time>
-            <Time style={{marginLeft: 5}}>
+            </Min>
+            <Sec style={{marginLeft: 5}}>
                 <div style={{color: "white", fontSize: 20, alignItems: "center", justifyContent: "center", display: "flex"}}>
                     <div style={{position: "relative", top: 10}}>
                         &nbsp;&nbsp;&nbsp;2<br/>SEC
                     </div>
                 </div>
-            </Time>
+            </Sec>
             <Text style={{color: "black", fontSize: 28, alignItems: "center", justifyContent: "center", display: "flex", top: 375, left: 995, position: "absolute"}}>
                 Burger<br/>tommato, green salad,pita, ketchup, maionese, â¦.
-
-
             </Text>
 
 
@@ -58,7 +56,7 @@ const StyledPageContainer = styled.div`
   background-color: #E6D7FF;
   height: 650px;
   width: 1400px;
-  postition: flex;
+  postition: absolute;
   margin-top: 100px;
   margin-left: auto;
   margin-right: auto;
@@ -70,21 +68,49 @@ const Content = styled.div`
   background-color: white;
   height: 500px;
   width: 500px;
-  postition: relative;
+  postition: absolute;
   display: inline-block;
   z-index: -1;
   order: 999;
   margin-top: 100px;
 `
-const Time = styled.div`
+const Days = styled.div`
+  background-color: #F77D54;
+  height: 82px;
+  width: 107px;
+  display: inline-block;
+  postition: absolute;
+  z-index: 50;
+`
+const Hours = styled.div`
+  background-color: #F77D54;
+  height: 82px;
+  width: 107px;
+  display: inline-block;
+  postition: absolute;
+  z-index: 50;
+`
+const Min = styled.div`
   background-color: #F77D54;
   height: 82px;
   width: 107px;
   display: inline-block;
   postition: relative;
-
   z-index: 50;
 `
+const Sec = styled.div`
+  background-color: #F77D54;
+  height: 82px;
+  width: 107px;
+  display: inline-block;
+  postition: relative;
+  z-index: 50;
+`
+
+
+
+
+
 const Burger = styled.div`
   position: absolute;
   
@@ -99,4 +125,4 @@ const Burger = styled.div`
   objectFit: 'cover';
   z-index: 50;
 `;
-export default Second;
+export default Dashboard;

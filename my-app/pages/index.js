@@ -1,17 +1,25 @@
 
 import ResponsiveAppBar from "@/components/ResponsiveAppBar";
-import Second from "@/components/Second";
-import First from "@/components/First";
-import Third from "@/components/Third";
-import Fourth from "@/components/Fourth";
-import Banner from "@/components/Banner";
+import Dashboard from "@/components/Dashboard";
+
 import styled from 'styled-components';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import React, { useState } from 'react';
 import Basket from "@/components/Basket";
 import BuyButton from "@/components/BuyButton";
+import Coupons from "@/components/Coupons";
 export default function Home() {
     const [showBasket, setShowBasket] = useState(false);
+    const [showCoupons, setShowCoupons] = useState(false);
+
+    const changeCoupons = () =>{
+        if (showCoupons == false){
+            setShowCoupons(true); // When clicked, set the state to true
+        }
+        else{
+            setShowCoupons(false); // When clicked, set the state to true
+        }
+    }
 
     // Define a function to handle click events
     const handleClick = () => {
@@ -25,10 +33,11 @@ export default function Home() {
   return (
     <>
         <BuyButton></BuyButton>
-        <ShoppingCartIcon  onClick={handleClick} style={{zIndex: 999, position: "absolute", top: 35, left: 1130}}/>
+        <ShoppingCartIcon  onClick={handleClick} style={{zIndex: 999, position: "absolute", top: 30, left: 1280}}/>
         {showBasket && <Basket/>}
-        <ResponsiveAppBar style={{zIndex: -1}}></ResponsiveAppBar>
-        <Second style={{zIndex: 10}}></Second>
+        <ResponsiveAppBar changeCoupons={changeCoupons} style={{zIndex: -1}}></ResponsiveAppBar>
+        {showCoupons && <Coupons/>}
+        <Dashboard style={{zIndex: 10, position: "absolute"}}></Dashboard>
         <Background></Background>
 
 
