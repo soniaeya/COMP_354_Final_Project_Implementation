@@ -5,7 +5,7 @@ import Dashboard from "@/components/Dashboard";
 import styled from 'styled-components';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import React, { useState } from 'react';
-import Basket from "@/components/Basket";
+import BasketMenu from "@/components/BasketMenu";
 import BuyButton from "@/components/BuyButton";
 import Coupons from "@/components/Coupons";
 import ProfileMenu from "@/components/ProfileMenu";
@@ -14,8 +14,21 @@ export default function Home() {
     const [showCoupons, setShowCoupons] = useState(false);
     const [showProfileMenu, setShowProfileMenu] = useState(false);
     const [isloggedin, setisloggedin] = useState(false);
-    const [username, setUsername] = useState("")
+    const [username, setUsername] = useState("guest")
 
+    const changeUser = (newUsername) =>{
+        setUsername(newUsername);
+    }
+
+    const changeLogin = () =>{
+        if (isloggedin == false){
+            setisloggedin(true); // When clicked, set the state to true
+        }
+        else{
+            setisloggedin(false); // When clicked, set the state to true
+        }
+
+    }
     const changeProfileMenu = () =>{
         if (showProfileMenu == false){
             setShowProfileMenu(true); // When clicked, set the state to true
@@ -47,13 +60,14 @@ export default function Home() {
     <>
         <BuyButton></BuyButton>
         <ShoppingCartIcon  onClick={handleClick} style={{zIndex: 999, position: "absolute", top: 30, left: 1280}}/>
-        {showBasket && <Basket/>}
+        {showBasket && <BasketMenu/>}
         <ResponsiveAppBar showCouponMenu={showCouponMenu} changeProfileMenu={changeProfileMenu} style={{zIndex: -1}}></ResponsiveAppBar>
 
         {showCoupons && <Coupons/>}
-        {showProfileMenu && <ProfileMenu isloggedin={isloggedin}/>}
+        {showProfileMenu && <ProfileMenu isloggedin={isloggedin} changeLogin={changeLogin} changeUser={changeUser}/>}
         <Dashboard style={{zIndex: 10, position: "absolute"}}></Dashboard>
         <Background></Background>
+
 
 
     </>

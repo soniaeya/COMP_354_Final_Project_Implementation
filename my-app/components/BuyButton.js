@@ -39,7 +39,7 @@ const StyledButton = styled(Button)`
   background-color: #F77D54;
   display: inline-block;
   postition: absolute;
-  z-index: 1999;
+  z-index: 9;
   order: 999;
   top: 600px;
   left: 1200px;

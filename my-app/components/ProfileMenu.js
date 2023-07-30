@@ -1,10 +1,51 @@
 import React, {useState} from 'react';
 import styled from "styled-components";
 import Button from "@mui/material/Button";
-import {Box, Modal, TextField, Typography} from "@mui/material";
+import {Box, Checkbox, Container, FormControlLabel, Grid, Modal, TextField, Typography} from "@mui/material";
+import Link from "next/link";
 
-const ProfileMenu = ({isloggedin}) => {
-    const value = isloggedin;
+const ProfileMenu = ({isloggedin, changeLogin, changeUser}) => {
+    const [open, setOpen] = React.useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
+    const style = {
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        width: 400,
+        bgcolor: 'background.paper',
+        border: '2px solid #000',
+        boxShadow: 24,
+        p: 4,
+        mb: 2,
+        display: "flex",
+        flexDirection: "column",
+        height: 450,
+        overflowY: "auto",
+        overflowX: "hidden",
+        msOverflowY: "none",
+    };
+
+    const handleSubmit = (event) => {
+        alert("You have signed in")
+        handleClose();
+        changeLogin(true);
+
+        event.preventDefault();
+        const data = new FormData(event.currentTarget);
+        console.log({
+            user: data.get("user"),
+            password: data.get("password"),
+        });
+        changeUser(data.get("user"));
+    };
+
+    const handleLogout = (event) => {
+
+        changeLogin(false);
+
+    };
     return (
         <>
             <MyStyledComponent>
@@ -12,8 +53,69 @@ const ProfileMenu = ({isloggedin}) => {
             </MyStyledComponent>
             <ProfileInitialMenu>
 
-                {value?<LogoutButton variant="contained" >Logout</LogoutButton>:<LoginButton  variant="contained" >Login</LoginButton>}
+                {isloggedin ?<LogoutButton onClick={handleLogout} variant="contained" >Logout</LogoutButton>:<LoginButton onClick={handleOpen}   variant="contained" >Login</LoginButton>}
 
+                <Modal
+                    open={open}
+                    onClose={handleClose}
+                    aria-labelledby="modal-modal-title"
+                    aria-describedby="modal-modal-description"
+                >
+                    <Box sx={style} >
+                        <Typography id="modal-modal-description" sx={{ mt: 2 }} >
+                            <div>
+                                <Container component="main" maxWidth="xs">
+                                    <Box
+                                        sx={{
+                                            marginTop: 8,
+                                            display: "flex",
+                                            flexDirection: "column",
+                                            alignItems: "center",
+                                        }}
+                                    >
+                                        <Typography component="h1" variant="h5">
+                                            Sign in
+                                        </Typography>
+                                        <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+                                            <TextField
+                                                margin="normal"
+                                                required
+                                                fullWidth
+                                                id="user"
+                                                label="Username"
+                                                name="user"
+                                                autoComplete="user"
+                                                autoFocus
+                                            />
+                                            <TextField
+                                                margin="normal"
+                                                required
+                                                fullWidth
+                                                name="password"
+                                                label="Password"
+                                                type="password"
+                                                id="password"
+                                                autoComplete="current-password"
+                                            />
+
+                                            <Button
+                                                type="submit"
+                                                fullWidth
+                                                variant="contained"
+                                                sx={{ mt: 3, mb: 2 }}
+                                            >
+                                                Sign In
+                                            </Button>
+
+                                        </Box>
+                                    </Box>
+                                </Container>
+
+
+                            </div>
+                        </Typography>
+                    </Box>
+                </Modal>
 
 
 

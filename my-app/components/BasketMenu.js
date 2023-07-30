@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Button from "@mui/material/Button";
 import {TextField} from "@mui/material";
 
-const Basket = () => {
+const BasketMenu = () => {
     const [showCustomMenu, setShowCustomMenu] = useState(false);
     const [showEmptyMenu, setShowEmptyMenu] = useState(false);
     const [showInitialMenu, setShowInitialMenu] = useState(true);
@@ -76,7 +76,7 @@ const Basket = () => {
     );
 };
 
-export default Basket;
+export default BasketMenu;
 const MyStyledComponent = styled.div`
   color: black;
   font-size: 28px;
