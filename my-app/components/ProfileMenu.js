@@ -44,6 +44,7 @@ const ProfileMenu = ({isloggedin, changeLogin, changeUser}) => {
     const handleLogout = (event) => {
         changeUser("guest");
         changeLogin(false);
+        alert("you have successfully logged out!")
 
     };
     return (

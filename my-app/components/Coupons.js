@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from "styled-components";
 
-const Coupons = () => {
+const Coupons = ({username}) => {
     return (
         <>
             <MyStyledComponent>
@@ -9,11 +9,14 @@ const Coupons = () => {
             </MyStyledComponent>
             <CouponsInitialMenu>
                 <div style={{ position: "absolute", padding: "20px", top: "10px"}}>
-                    You have purchased 7,10$ worth of food.
+                    Hi {username}
                 </div>
-                <div style={{ position: "absolute", padding: "5px", top: "107px", left: "18px"}}>
-                    You have 0 coupon(s) worth 0,00$
+                <div style={{ position: "absolute", padding: "20px", top: "58px", fontSize: "22px"}}>
+                    You have purchased 7,10$ worth of food,
+                    <br/>
+                    and 0 coupon(s) worth 0,00$
                 </div>
+
             </CouponsInitialMenu>
 
         </>

@@ -63,7 +63,7 @@ export default function Home() {
         {showBasket && <BasketMenu username={username}/>}
         <ResponsiveAppBar showCouponMenu={showCouponMenu} changeProfileMenu={changeProfileMenu} style={{zIndex: -1}}></ResponsiveAppBar>
 
-        {showCoupons && <Coupons/>}
+        {showCoupons && <Coupons username={username}/>}
         {showProfileMenu && <ProfileMenu isloggedin={isloggedin} changeLogin={changeLogin} changeUser={changeUser}/>}
         <Dashboard style={{zIndex: 10, position: "absolute"}}></Dashboard>
         <Background></Background>

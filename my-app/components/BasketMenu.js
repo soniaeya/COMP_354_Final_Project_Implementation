@@ -36,7 +36,6 @@ const BasketMenu = ({username}) => {
     };
     const loadCustomBasket = (event) => {
 
-        const tryLoadDict = {username: event.target.value};
 
         if (event.key === 'Enter') {
             if (objectExists(username, event.target.value)){
@@ -200,6 +199,26 @@ const LoadCustomBasketMenu = styled.div`
   outline-style: solid;
   outline-width: 2px;
 `
+
+const InUseBasketMenu = styled.div`
+  color: black;
+  font-size: 28px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  background-color: white;
+  z-index: 999;
+  width: 450px;
+  height: 170px;
+  left: 1125px;
+  top: 180px;
+  position: absolute;
+  outline-color: black;
+  outline-style: solid;
+  outline-width: 2px;
+`
+
+
 const EmptyButton = styled(Button)`
   background-color: #F77D54;
   display: inline-block;
