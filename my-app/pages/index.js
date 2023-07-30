@@ -8,11 +8,23 @@ import React, { useState } from 'react';
 import Basket from "@/components/Basket";
 import BuyButton from "@/components/BuyButton";
 import Coupons from "@/components/Coupons";
+import ProfileMenu from "@/components/ProfileMenu";
 export default function Home() {
     const [showBasket, setShowBasket] = useState(false);
     const [showCoupons, setShowCoupons] = useState(false);
+    const [showProfileMenu, setShowProfileMenu] = useState(false);
+    const [isloggedin, setisloggedin] = useState(false);
+    const [username, setUsername] = useState("")
 
-    const changeCoupons = () =>{
+    const changeProfileMenu = () =>{
+        if (showProfileMenu == false){
+            setShowProfileMenu(true); // When clicked, set the state to true
+        }
+        else{
+            setShowProfileMenu(false); // When clicked, set the state to true
+        }
+    }
+    const showCouponMenu = () =>{
         if (showCoupons == false){
             setShowCoupons(true); // When clicked, set the state to true
         }
@@ -30,13 +42,16 @@ export default function Home() {
             setShowBasket(false); // When clicked, set the state to true
         }
     }
+
   return (
     <>
         <BuyButton></BuyButton>
         <ShoppingCartIcon  onClick={handleClick} style={{zIndex: 999, position: "absolute", top: 30, left: 1280}}/>
         {showBasket && <Basket/>}
-        <ResponsiveAppBar changeCoupons={changeCoupons} style={{zIndex: -1}}></ResponsiveAppBar>
+        <ResponsiveAppBar showCouponMenu={showCouponMenu} changeProfileMenu={changeProfileMenu} style={{zIndex: -1}}></ResponsiveAppBar>
+
         {showCoupons && <Coupons/>}
+        {showProfileMenu && <ProfileMenu isloggedin={isloggedin}/>}
         <Dashboard style={{zIndex: 10, position: "absolute"}}></Dashboard>
         <Background></Background>
 

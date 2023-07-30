@@ -10,19 +10,13 @@ import styled from "styled-components";
 
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
-export default function ResponsiveAppBar({changeCoupons}) {
+export default function ResponsiveAppBar({showCouponMenu, changeProfileMenu}) {
 
-    const navItems = [
-        { name: 'Home', path: '/' },
-        { name: 'Coupons', path: '/' },
-        { name: 'Logout', path: '/' },
-
-    ];
     const handleCouponsClick = () => {
-        changeCoupons(1);
+        showCouponMenu(1);
     }
     const handleLogoutClick = () => {
-            alert("You have successfully logged out!");
+        changeProfileMenu(1);
     }
 
     return (
@@ -30,8 +24,9 @@ export default function ResponsiveAppBar({changeCoupons}) {
 
             <nav>
                 <StyledButton>Home</StyledButton>
-                <StyledButton onClick={handleCouponsClick}>Profile</StyledButton>
-                <StyledButton onClick={handleLogoutClick}>Logout</StyledButton></nav>
+                <StyledButton onClick={handleCouponsClick}>Coupons</StyledButton>
+                <StyledButton onClick={handleLogoutClick}>Profile</StyledButton></nav>
+
         </AppBar>
 
 

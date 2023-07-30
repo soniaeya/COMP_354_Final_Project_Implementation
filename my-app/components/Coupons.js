@@ -31,7 +31,7 @@ const MyStyledComponent = styled.div`
   z-index: 999;
   width: 450px;
   height: 70px;
-  left: 925px;
+  left: 900px;
   top: 110px;
   position: absolute;
   outline-color: black;
@@ -49,7 +49,7 @@ const CouponsInitialMenu = styled.div`
   z-index: 999;
   width: 450px;
   height: 170px;
-  left: 925px;
+  left: 900px;
   top: 180px;
   position: absolute;
   outline-color: black;
