@@ -21,8 +21,20 @@ export default function Home() {
     //Burger Basket Handler
     const [hasBurger, setHasBurger] = useState((false));
     const [hasPizza, setHasPizza] = useState((false));
+    const [countPizza, setCountPizza] = useState(0);
+    const [countBurger, setCountBurger] = useState(0);
+
+    const addBurger = ()=>{
+        setCountBurger(countBurger+1);
+    }
+
+    const addPizza = ()=>{
+        setCountPizza(countPizza+1);
+    }
+
 
     const removeBurger = ()=>{
+        setCountBurger(0);
         if(hasBurger){
             setHasBurger(false);
             alert("you have removed the burger(s)")
@@ -31,15 +43,14 @@ export default function Home() {
     }
 
     const removePizza = ()=>{
+        setCountPizza(0);
         if(hasPizza){
             setHasPizza(false);
             alert("you have removed the pizza(s)")
         }
 
     }
-    const addBurger = ()=>{
-        setHasBurger(true);
-    }
+
 
     const changeUser = (newUsername) =>{
         setUsername(newUsername);
@@ -83,9 +94,9 @@ export default function Home() {
 
   return (
     <>
-        <BuyBurgerButton setHasPizza={setHasPizza} setHasBurger={setHasBurger}></BuyBurgerButton>
+        <BuyBurgerButton countPizza={countPizza} countBurger={countBurger} setHasPizza={setHasPizza} setHasBurger={setHasBurger} setCountBurger={setCountBurger} setCountPizza={setCountPizza}></BuyBurgerButton>
         <ShoppingCartIcon  onClick={handleClick} style={{zIndex: 999, position: "absolute", top: 30, left: 1280}}/>
-        {showBasket && <BasketMenu hasPizza={hasPizza} hasBurger={hasBurger} removePizza={removePizza} removeBurger={removeBurger} username={username}/>}
+        {showBasket && <BasketMenu countPizza={countPizza} countBurger={countBurger} hasPizza={hasPizza} hasBurger={hasBurger} removePizza={removePizza} removeBurger={removeBurger} username={username}/>}
         <ResponsiveAppBar showCouponMenu={showCouponMenu} changeProfileMenu={changeProfileMenu} style={{zIndex: -1}}></ResponsiveAppBar>
 
         {showCoupons && <Coupons username={username}/>}

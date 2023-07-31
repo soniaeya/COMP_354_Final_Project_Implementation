@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Button from "@mui/material/Button";
 import {TextField} from "@mui/material";
 import ClearIcon from '@mui/icons-material/Clear';
-const BasketMenu = ({username, hasBurger, removeBurger, hasPizza, removePizza}) => {
+const BasketMenu = ({username, hasBurger, removeBurger, hasPizza, removePizza, countBurger, countPizza}) => {
     //Menu
     const [showCustomMenu, setShowCustomMenu] = useState(false);
     const [showEmptyMenu, setShowEmptyMenu] = useState(false);
@@ -17,6 +17,15 @@ const BasketMenu = ({username, hasBurger, removeBurger, hasPizza, removePizza}) 
     //Basket Prompts
     const [newBasketText, setNewBasketText] = useState('');
     const [loadBasketText, setLoadBasketText] = useState('');
+
+    const originalFloat = 2.10;
+    const numberOfDecimalPlaces = 3;
+    const burgerPrice = countBurger * 4.00;
+    const pizzaPrice = countPizza * 3.55;
+    const totalPrice = burgerPrice + pizzaPrice;
+
+    // Use toFixed to round to 2 decimal places, then parseFloat to convert back to a float
+    const modifiedFloat = parseFloat(originalFloat.toFixed(numberOfDecimalPlaces));
 
 
     //Basket Content
@@ -141,8 +150,10 @@ const BasketMenu = ({username, hasBurger, removeBurger, hasPizza, removePizza}) 
                             <img style={{marginLeft: "20px"}} src="/images/burger.png" alt="Burger Image" width="45px" height="45px"/>
 
                             <div style={{ marginLeft: "15px", width: "150px"}}>Burger</div>
-                            <div style={{ marginLeft: "15px", width: "50px"}}>1</div>
-                            <div style={{ marginLeft: "15px", width: "50px"}}>4,00$</div>
+                            <div style={{ marginLeft: "15px", width: "50px"}}>{countBurger}</div>
+                            <div style={{ marginLeft: "15px", width: "50px"}}>{
+                                burgerPrice.toFixed(2)
+                            }$</div>
 
 
                             <ClearIcon style={{ marginLeft: "35px"}} onClick={removeBurger}></ClearIcon>
@@ -154,11 +165,11 @@ const BasketMenu = ({username, hasBurger, removeBurger, hasPizza, removePizza}) 
                             <img style={{marginLeft: "20px"}} src="/images/pizza.jpg" alt="Pizza Image" width="45px" height="45px"/>
 
                             <div style={{ marginLeft: "15px", width: "150px"}}>Pizza</div>
-                            <div style={{ marginLeft: "15px", width: "50px"}}>1</div>
-                            <div style={{ marginLeft: "15px", width: "50px"}}>3,55$</div>
+                            <div style={{ marginLeft: "15px", width: "50px"}}>{countPizza}</div>
+                            <div style={{ marginLeft: "27px", width: "50px"}}>{pizzaPrice.toFixed(2)}$</div>
 
 
-                            <ClearIcon style={{ marginLeft: "35px"}} onClick={removePizza}></ClearIcon>
+                            <ClearIcon style={{ marginLeft: "23px"}} onClick={removePizza}></ClearIcon>
                         </BasketBurgerDiv>
                     }
 
@@ -167,7 +178,7 @@ const BasketMenu = ({username, hasBurger, removeBurger, hasPizza, removePizza}) 
 
                     <CheckoutDiv>
                         <CheckoutButton variant="contained">Checkout</CheckoutButton>
-                        <div style={{ width: "250px", marginLeft: "35px"}}>Total: 7,10$</div>
+                        <div style={{ width: "250px", marginLeft: "35px"}}>Total: {totalPrice.toFixed(2)}$</div>
                     </CheckoutDiv>
 
                 </InUseBasketMenu>

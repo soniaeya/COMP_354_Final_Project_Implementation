@@ -5,12 +5,13 @@ import ClearIcon from '@mui/icons-material/Clear';
 import {Box, Container, Modal, TextField, Typography} from "@mui/material";
 import BuyBurgerButton from "@/components/BuyBurgerButton";
 import SuggestedBuyBurgerButton from "@/components/SuggestedBuyBurgerButton";
-const BuyPizzaButton = ({setHasPizza}) => {
+const BuyPizzaButton = ({setHasPizza, setCountPizza, countPizza}) => {
     const [showSuggestions, setShowSuggestions] = useState(false);
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => {
         setHasPizza(true);
         setOpen(true);
+        setCountPizza(countPizza+1);
     }
     const handleClose = () => setOpen(false);
     const style = {
