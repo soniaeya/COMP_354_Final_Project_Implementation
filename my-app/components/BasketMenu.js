@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Button from "@mui/material/Button";
 import {TextField} from "@mui/material";
 import ClearIcon from '@mui/icons-material/Clear';
-const BasketMenu = ({username}) => {
+const BasketMenu = ({username, hasBurger, removeBurger, hasPizza, removePizza}) => {
     //Menu
     const [showCustomMenu, setShowCustomMenu] = useState(false);
     const [showEmptyMenu, setShowEmptyMenu] = useState(false);
@@ -20,8 +20,8 @@ const BasketMenu = ({username}) => {
 
 
     //Basket Content
-    const [hasBurger, setHasBurger] = useState((true));
-    const [hasPizza, setHasPizza] = useState((false));
+
+
 
 
     const objectExists = (key, value) => {
@@ -95,17 +95,7 @@ const BasketMenu = ({username}) => {
     }
 
 
-    const changeHasBurger = ()=>{
-        if(hasBurger){
-            setHasBurger(false);
-            alert("you have removed the burger(s)")
-        }
-        else{
-            setHasBurger(true);
-        }
 
-
-    }
     return (
         <>
         <MyStyledComponent>
@@ -155,10 +145,10 @@ const BasketMenu = ({username}) => {
                             <div style={{ marginLeft: "15px", width: "50px"}}>4,00$</div>
 
 
-                            <ClearIcon style={{ marginLeft: "35px"}} onClick={changeHasBurger}></ClearIcon>
+                            <ClearIcon style={{ marginLeft: "35px"}} onClick={removeBurger}></ClearIcon>
                         </BasketBurgerDiv>
                     }
-                    {!hasPizza &&
+                    {hasPizza &&
                         <BasketBurgerDiv>
 
                             <img style={{marginLeft: "20px"}} src="/images/pizza.jpg" alt="Pizza Image" width="45px" height="45px"/>
@@ -168,7 +158,7 @@ const BasketMenu = ({username}) => {
                             <div style={{ marginLeft: "15px", width: "50px"}}>3,55$</div>
 
 
-                            <ClearIcon style={{ marginLeft: "35px"}} onClick={changeHasBurger}></ClearIcon>
+                            <ClearIcon style={{ marginLeft: "35px"}} onClick={removePizza}></ClearIcon>
                         </BasketBurgerDiv>
                     }
 

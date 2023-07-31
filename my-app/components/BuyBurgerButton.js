@@ -4,10 +4,13 @@ import Button from '@mui/material/Button';
 import ClearIcon from '@mui/icons-material/Clear';
 import {Box, Container, Modal, TextField, Typography} from "@mui/material";
 import BuyPizzaButton from "@/components/BuyPizzaButton";
-const BuyBurgerButton = () => {
+const BuyBurgerButton = ({setHasBurger, setHasPizza}) => {
     const [showSuggestions, setShowSuggestions] = useState(false);
     const [open, setOpen] = React.useState(false);
-    const handleOpen = () => setOpen(true);
+    const handleOpen = () => {
+        setOpen(true);
+        setHasBurger(true);
+    }
     const handleClose = () => setOpen(false);
     const style = {
         position: 'absolute',
@@ -42,12 +45,6 @@ const BuyBurgerButton = () => {
 
     return (
         <>
-            {/*//     <Content>*/}
-            {/*//     <ClearIcon style={{position: "relative", left: 1450}} onClick={handleBlur}></ClearIcon>*/}
-            {/*//     <div style={{fontWeight: "bold", fontSize: 40}}>These items might interest you:</div>*/}
-            {/*//     <Pizza></Pizza>*/}
-            {/*//     <div style={{fontWeight: "bold", fontSize: 20, position: "relative"}}>C. Pizza</div>*/}
-            {/*// </Content>*/}
 
 
                 <Modal
@@ -80,7 +77,7 @@ const BuyBurgerButton = () => {
                                         <br/>
                                         <div style={{fontWeight: "bold", fontSize: 20, position: "relative"}}>C. Pizza - 3,55$</div>
                                         <br/>
-                                        <BuyPizzaButton>Buy Now</BuyPizzaButton>
+                                        <BuyPizzaButton setHasPizza={setHasPizza}>Buy Now</BuyPizzaButton>
                                     </Box>
                                 </Container>
 

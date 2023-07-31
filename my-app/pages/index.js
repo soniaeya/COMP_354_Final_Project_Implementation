@@ -16,6 +16,31 @@ export default function Home() {
     const [isloggedin, setisloggedin] = useState(false);
     const [username, setUsername] = useState("guest")
 
+
+
+    //Burger Basket Handler
+    const [hasBurger, setHasBurger] = useState((false));
+    const [hasPizza, setHasPizza] = useState((false));
+
+    const removeBurger = ()=>{
+        if(hasBurger){
+            setHasBurger(false);
+            alert("you have removed the burger(s)")
+        }
+
+    }
+
+    const removePizza = ()=>{
+        if(hasPizza){
+            setHasPizza(false);
+            alert("you have removed the pizza(s)")
+        }
+
+    }
+    const addBurger = ()=>{
+        setHasBurger(true);
+    }
+
     const changeUser = (newUsername) =>{
         setUsername(newUsername);
     }
@@ -58,9 +83,9 @@ export default function Home() {
 
   return (
     <>
-        <BuyBurgerButton></BuyBurgerButton>
+        <BuyBurgerButton setHasPizza={setHasPizza} setHasBurger={setHasBurger}></BuyBurgerButton>
         <ShoppingCartIcon  onClick={handleClick} style={{zIndex: 999, position: "absolute", top: 30, left: 1280}}/>
-        {showBasket && <BasketMenu username={username}/>}
+        {showBasket && <BasketMenu hasPizza={hasPizza} hasBurger={hasBurger} removePizza={removePizza} removeBurger={removeBurger} username={username}/>}
         <ResponsiveAppBar showCouponMenu={showCouponMenu} changeProfileMenu={changeProfileMenu} style={{zIndex: -1}}></ResponsiveAppBar>
 
         {showCoupons && <Coupons username={username}/>}
