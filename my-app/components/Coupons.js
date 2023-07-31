@@ -9,7 +9,7 @@ const Coupons = ({username}) => {
             </MyStyledComponent>
             <CouponsInitialMenu>
                 <div style={{ position: "absolute", padding: "20px", top: "10px"}}>
-                    Hi {username}
+                    Hi {username}!
                 </div>
                 <div style={{ position: "absolute", padding: "20px", top: "58px", fontSize: "22px"}}>
                     You have purchased 7,10$ worth of food,

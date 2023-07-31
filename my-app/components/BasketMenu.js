@@ -3,16 +3,26 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import styled from "styled-components";
 import Button from "@mui/material/Button";
 import {TextField} from "@mui/material";
-
+import ClearIcon from '@mui/icons-material/Clear';
 const BasketMenu = ({username}) => {
+    //Menu
     const [showCustomMenu, setShowCustomMenu] = useState(false);
     const [showEmptyMenu, setShowEmptyMenu] = useState(false);
     const [showInitialMenu, setShowInitialMenu] = useState(true);
+    const [showUserMenu, setShowUserMenu] = useState(false);
 
+    //Basket Data {User:Basket name}
     const [basketDict, setBasketDict] = useState([{"guest": "basket1"}, {"sonia": "basket2"}])
-    const [newBasketText, setNewBasketText] = useState('');
 
+    //Basket Prompts
+    const [newBasketText, setNewBasketText] = useState('');
     const [loadBasketText, setLoadBasketText] = useState('');
+
+
+    //Basket Content
+    const [hasBurger, setHasBurger] = useState((true));
+    const [hasPizza, setHasPizza] = useState((false));
+
 
     const objectExists = (key, value) => {
         return basketDict.some(item => item[key] === value);
@@ -30,13 +40,15 @@ const BasketMenu = ({username}) => {
                 const newBasket = {username:event.target.value}
                 setBasketDict([...basketDict, newBasket]);
                 alert("The account '" + username+ "' has successfully created the following basket: "+event.target.value+"\n\nHappy Shopping!")
+                setShowUserMenu(true);
+                setShowEmptyMenu(false);
+                setShowInitialMenu(false);
+
             }
 
         }
     };
     const loadCustomBasket = (event) => {
-
-
         if (event.key === 'Enter') {
             if (objectExists(username, event.target.value)){
                 alert("The account '" + username+ "' has successfully loaded the basket named: "+event.target.value)
@@ -81,6 +93,19 @@ const BasketMenu = ({username}) => {
             setShowInitialMenu(false); // When clicked, set the state to true
         }
     }
+
+
+    const changeHasBurger = ()=>{
+        if(hasBurger){
+            setHasBurger(false);
+            alert("you have removed the burger(s)")
+        }
+        else{
+            setHasBurger(true);
+        }
+
+
+    }
     return (
         <>
         <MyStyledComponent>
@@ -116,8 +141,46 @@ const BasketMenu = ({username}) => {
                     </div>
                     <StyledTextfield value={loadBasketText} onChange={handleLoadBasketTextChange} onKeyDown={loadCustomBasket} id="standard-basic" label="Enter Basket Name" variant="outlined" />
 
-
                 </ LoadCustomBasketMenu>
+            }
+            {showUserMenu
+                &&<InUseBasketMenu>
+                    {hasBurger &&
+                        <BasketBurgerDiv>
+
+                            <img style={{marginLeft: "20px"}} src="/images/burger.png" alt="Burger Image" width="45px" height="45px"/>
+
+                            <div style={{ marginLeft: "15px", width: "150px"}}>Burger</div>
+                            <div style={{ marginLeft: "15px", width: "50px"}}>1</div>
+                            <div style={{ marginLeft: "15px", width: "50px"}}>4,00$</div>
+
+
+                            <ClearIcon style={{ marginLeft: "35px"}} onClick={changeHasBurger}></ClearIcon>
+                        </BasketBurgerDiv>
+                    }
+                    {!hasPizza &&
+                        <BasketBurgerDiv>
+
+                            <img style={{marginLeft: "20px"}} src="/images/pizza.jpg" alt="Pizza Image" width="45px" height="45px"/>
+
+                            <div style={{ marginLeft: "15px", width: "150px"}}>Pizza</div>
+                            <div style={{ marginLeft: "15px", width: "50px"}}>1</div>
+                            <div style={{ marginLeft: "15px", width: "50px"}}>3,55$</div>
+
+
+                            <ClearIcon style={{ marginLeft: "35px"}} onClick={changeHasBurger}></ClearIcon>
+                        </BasketBurgerDiv>
+                    }
+
+
+
+
+                    <CheckoutDiv>
+                        <CheckoutButton variant="contained">Checkout</CheckoutButton>
+                        <div style={{ width: "250px", marginLeft: "35px"}}>Total: 7,10$</div>
+                    </CheckoutDiv>
+
+                </InUseBasketMenu>
             }
 
 
@@ -127,6 +190,52 @@ const BasketMenu = ({username}) => {
 };
 
 export default BasketMenu;
+
+const BasketBurgerDiv = styled.div`
+  height: 50px;
+  width: 450px;
+  display: flex;
+  align-items: center; /* Aligns children vertically in the middle */
+  outline-color: black;
+  outline-style: solid;
+  outline-width: 1px;
+`
+const CheckoutDiv = styled.div`
+  height: 50px;
+  width: 450px;
+  display: flex;
+  align-items: center; /* Aligns children vertically in the middle */
+  outline-color: black;
+  outline-style: solid;
+  outline-width: 1px;
+`
+
+const InUseBasketMenu = styled.div`
+  color: black;
+  font-size: 28px;
+  //justify-content: center;
+  //display: flex;
+  
+  background-color: white;
+  z-index: 999;
+  width: 450px;
+  left: 1125px;
+  top: 180px;
+  position: absolute;
+  outline-color: black;
+  outline-style: solid;
+  outline-width: 2px;
+`
+const CheckoutButton = styled(Button)`
+  background-color: #F77D54;
+  display: inline-block;
+  postition: absolute;
+  z-index: 9;
+  order: 9999999;
+  left: 20px;
+  &:hover {
+    background-color: #F77D54;
+`
 const MyStyledComponent = styled.div`
   color: black;
   font-size: 28px;
@@ -200,23 +309,7 @@ const LoadCustomBasketMenu = styled.div`
   outline-width: 2px;
 `
 
-const InUseBasketMenu = styled.div`
-  color: black;
-  font-size: 28px;
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  background-color: white;
-  z-index: 999;
-  width: 450px;
-  height: 170px;
-  left: 1125px;
-  top: 180px;
-  position: absolute;
-  outline-color: black;
-  outline-style: solid;
-  outline-width: 2px;
-`
+
 
 
 const EmptyButton = styled(Button)`

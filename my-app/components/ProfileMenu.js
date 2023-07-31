@@ -99,14 +99,14 @@ const ProfileMenu = ({isloggedin, changeLogin, changeUser}) => {
                                                 autoComplete="current-password"
                                             />
 
-                                            <Button
+                                            <SignInButton
                                                 type="submit"
                                                 fullWidth
                                                 variant="contained"
                                                 sx={{ mt: 3, mb: 2 }}
                                             >
                                                 Sign In
-                                            </Button>
+                                            </SignInButton>
 
                                         </Box>
                                     </Box>
@@ -199,4 +199,13 @@ const StyledTextfield = styled(TextField)`
   }
 
 
+`
+const SignInButton = styled(Button)`
+  height: 50px;
+
+  background-color: #F77D54;
+  &:hover {
+    background-color: #F77D54;
+    
+    
 `

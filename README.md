@@ -1,1 +1,2 @@
-    const [customBasketText, setcustomBasketText] = useState('');
+    const [hasPizza, setHasPizza] = useState((false));
+    
