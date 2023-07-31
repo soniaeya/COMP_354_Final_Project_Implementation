@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import React, { useState } from 'react';
 import BasketMenu from "@/components/BasketMenu";
-import BuyButton from "@/components/BuyButton";
+import BuyBurgerButton from "@/components/BuyBurgerButton";
 import Coupons from "@/components/Coupons";
 import ProfileMenu from "@/components/ProfileMenu";
 export default function Home() {
@@ -58,7 +58,7 @@ export default function Home() {
 
   return (
     <>
-        <BuyButton></BuyButton>
+        <BuyBurgerButton></BuyBurgerButton>
         <ShoppingCartIcon  onClick={handleClick} style={{zIndex: 999, position: "absolute", top: 30, left: 1280}}/>
         {showBasket && <BasketMenu username={username}/>}
         <ResponsiveAppBar showCouponMenu={showCouponMenu} changeProfileMenu={changeProfileMenu} style={{zIndex: -1}}></ResponsiveAppBar>
