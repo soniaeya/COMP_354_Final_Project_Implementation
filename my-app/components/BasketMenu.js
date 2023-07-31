@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Button from "@mui/material/Button";
 import {TextField} from "@mui/material";
 import ClearIcon from '@mui/icons-material/Clear';
-const BasketMenu = ({username, hasBurger, removeBurger, hasPizza, removePizza, countBurger, countPizza}) => {
+const BasketMenu = ({username, hasBurger, removeBurger, hasPizza, removePizza, countBurger, countPizza, setTotalPrice}) => {
     //Menu
     const [showCustomMenu, setShowCustomMenu] = useState(false);
     const [showEmptyMenu, setShowEmptyMenu] = useState(false);
@@ -23,9 +23,7 @@ const BasketMenu = ({username, hasBurger, removeBurger, hasPizza, removePizza, c
     const burgerPrice = countBurger * 4.00;
     const pizzaPrice = countPizza * 3.55;
     const totalPrice = burgerPrice + pizzaPrice;
-
-    // Use toFixed to round to 2 decimal places, then parseFloat to convert back to a float
-    const modifiedFloat = parseFloat(originalFloat.toFixed(numberOfDecimalPlaces));
+    setTotalPrice(totalPrice);
 
 
     //Basket Content

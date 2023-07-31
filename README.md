@@ -1,2 +1,1 @@
-    const [hasPizza, setHasPizza] = useState((false));
-    
+        setCountPizza(countPizza+1);

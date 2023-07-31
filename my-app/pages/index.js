@@ -15,6 +15,19 @@ export default function Home() {
     const [showProfileMenu, setShowProfileMenu] = useState(false);
     const [isloggedin, setisloggedin] = useState(false);
     const [username, setUsername] = useState("guest")
+    const [totalPrice, setTotalPrice] = useState(0)
+    const [numCoupons, setNumCoupons] = useState(0);
+
+    const changeNumCoupons = (totalPrice) => {
+        if (totalPrice < 1){
+            setNumCoupons(0)
+        }
+        else {
+            setNumCoupons(Math.floor(totalPrice / 10))
+        }
+
+
+    }
 
 
 
@@ -76,6 +89,13 @@ export default function Home() {
     const showCouponMenu = () =>{
         if (showCoupons == false){
             setShowCoupons(true); // When clicked, set the state to true
+            //change coupon state
+            changeNumCoupons(totalPrice);
+
+
+
+
+
         }
         else{
             setShowCoupons(false); // When clicked, set the state to true
@@ -96,10 +116,10 @@ export default function Home() {
     <>
         <BuyBurgerButton countPizza={countPizza} countBurger={countBurger} setHasPizza={setHasPizza} setHasBurger={setHasBurger} setCountBurger={setCountBurger} setCountPizza={setCountPizza}></BuyBurgerButton>
         <ShoppingCartIcon  onClick={handleClick} style={{zIndex: 999, position: "absolute", top: 30, left: 1280}}/>
-        {showBasket && <BasketMenu countPizza={countPizza} countBurger={countBurger} hasPizza={hasPizza} hasBurger={hasBurger} removePizza={removePizza} removeBurger={removeBurger} username={username}/>}
+        {showBasket && <BasketMenu setTotalPrice={setTotalPrice} countPizza={countPizza} countBurger={countBurger} hasPizza={hasPizza} hasBurger={hasBurger} removePizza={removePizza} removeBurger={removeBurger} username={username}/>}
         <ResponsiveAppBar showCouponMenu={showCouponMenu} changeProfileMenu={changeProfileMenu} style={{zIndex: -1}}></ResponsiveAppBar>
 
-        {showCoupons && <Coupons username={username}/>}
+        {showCoupons && <Coupons numCoupons={numCoupons} totalPrice={totalPrice} username={username}/>}
         {showProfileMenu && <ProfileMenu isloggedin={isloggedin} changeLogin={changeLogin} changeUser={changeUser}/>}
         <Dashboard style={{zIndex: 10, position: "absolute"}}></Dashboard>
         <Background></Background>

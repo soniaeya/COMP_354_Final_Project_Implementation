@@ -1,7 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from "styled-components";
 
-const Coupons = ({username}) => {
+const Coupons = ({username, totalPrice, numCoupons}) => {
+
+
+
     return (
         <>
             <MyStyledComponent>
@@ -12,9 +15,11 @@ const Coupons = ({username}) => {
                     Hi {username}!
                 </div>
                 <div style={{ position: "absolute", padding: "20px", top: "58px", fontSize: "22px"}}>
-                    You have purchased 7,10$ worth of food,
+                    You have purchased {totalPrice.toFixed(2)}$ worth of food,
                     <br/>
-                    and 0 coupon(s) worth 0,00$
+                    {/*1 dollar rebate when buy 5 dollars*/}
+
+                    and {numCoupons} coupon(s) worth {(numCoupons*5).toFixed(2)}$
                 </div>
 
             </CouponsInitialMenu>

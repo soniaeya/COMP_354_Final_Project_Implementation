@@ -75,9 +75,9 @@ const BuyPizzaButton = ({setHasPizza, setCountPizza, countPizza}) => {
                                     <br/>
                                     <img src="/images/burger.png" alt="Description of the image" width="250px" height="250px"/>
                                     <br/>
-                                    <div style={{fontWeight: "bold", fontSize: 20, position: "relative"}}>C. Pizza - 3,55$</div>
+                                    <div style={{fontWeight: "bold", fontSize: 20, position: "relative"}}>Burger - 4,00$</div>
                                     <br/>
-                                    <SuggestedBuyBurgerButton>Buy Now</SuggestedBuyBurgerButton>
+                                    <SuggestedBuyBurgerButton >Buy Now</SuggestedBuyBurgerButton>
                                 </Box>
                             </Container>
 
