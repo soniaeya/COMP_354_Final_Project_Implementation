@@ -4,12 +4,11 @@ import styled from "styled-components";
 import Button from "@mui/material/Button";
 import {TextField} from "@mui/material";
 import ClearIcon from '@mui/icons-material/Clear';
-const BasketMenu = ({username, hasBurger, removeBurger, hasPizza, removePizza, countBurger, countPizza, setTotalPrice}) => {
+const BasketMenu = ({username, hasBurger, removeBurger, hasPizza, removePizza, countBurger, countPizza, setTotalPrice, showInitialMenu, setShowInitialMenu, showUserMenu, setShowUserMenu}) => {
     //Menu
     const [showCustomMenu, setShowCustomMenu] = useState(false);
     const [showEmptyMenu, setShowEmptyMenu] = useState(false);
-    const [showInitialMenu, setShowInitialMenu] = useState(true);
-    const [showUserMenu, setShowUserMenu] = useState(false);
+
 
     //Basket Data {User:Basket name}
     const [basketDict, setBasketDict] = useState([{"guest": "basket1"}, {"sonia": "basket2"}])
@@ -59,6 +58,9 @@ const BasketMenu = ({username, hasBurger, removeBurger, hasPizza, removePizza, c
         if (event.key === 'Enter') {
             if (objectExists(username, event.target.value)){
                 alert("The account '" + username+ "' has successfully loaded the basket named: "+event.target.value)
+                setShowUserMenu(true);
+                setShowEmptyMenu(false);
+                setShowInitialMenu(false);
             }
             else{
                 alert("The account '" + username+ "' doesn't have a basket called '"+event.target.value+"'\n\nPlease try again!")

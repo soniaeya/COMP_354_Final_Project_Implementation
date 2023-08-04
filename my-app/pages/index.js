@@ -17,6 +17,9 @@ export default function Home() {
     const [username, setUsername] = useState("guest")
     const [totalPrice, setTotalPrice] = useState(0)
     const [numCoupons, setNumCoupons] = useState(0);
+    const [showInitialMenu, setShowInitialMenu] = useState(true);
+    const [showUserMenu, setShowUserMenu] = useState(false);
+
 
     const changeNumCoupons = (totalPrice) => {
         if (totalPrice < 1){
@@ -105,10 +108,19 @@ export default function Home() {
     // Define a function to handle click events
     const handleClick = () => {
         if (showBasket == false){
-            setShowBasket(true); // When clicked, set the state to true
+            setShowBasket(true);
+            // When clicked, set the state to true
+            if(showUserMenu){
+                setShowInitialMenu(false);
+            }
+            else{
+                setShowInitialMenu(true);
+            }
         }
         else{
-            setShowBasket(false); // When clicked, set the state to true
+                setShowBasket(false); // When clicked, set the state to true
+
+
         }
     }
 
@@ -116,7 +128,7 @@ export default function Home() {
     <>
         <BuyBurgerButton countPizza={countPizza} countBurger={countBurger} setHasPizza={setHasPizza} setHasBurger={setHasBurger} setCountBurger={setCountBurger} setCountPizza={setCountPizza}></BuyBurgerButton>
         <ShoppingCartIcon  onClick={handleClick} style={{zIndex: 999, position: "absolute", top: 30, left: 1280}}/>
-        {showBasket && <BasketMenu setTotalPrice={setTotalPrice} countPizza={countPizza} countBurger={countBurger} hasPizza={hasPizza} hasBurger={hasBurger} removePizza={removePizza} removeBurger={removeBurger} username={username}/>}
+        {showBasket && <BasketMenu showUserMenu={showUserMenu} setShowUserMenu={setShowUserMenu} showInitialMenu={showInitialMenu} setShowInitialMenu={setShowInitialMenu} setTotalPrice={setTotalPrice} countPizza={countPizza} countBurger={countBurger} hasPizza={hasPizza} hasBurger={hasBurger} removePizza={removePizza} removeBurger={removeBurger} username={username}/>}
         <ResponsiveAppBar showCouponMenu={showCouponMenu} changeProfileMenu={changeProfileMenu} style={{zIndex: -1}}></ResponsiveAppBar>
 
         {showCoupons && <Coupons numCoupons={numCoupons} totalPrice={totalPrice} username={username}/>}
