@@ -105,7 +105,7 @@ export default BuyBurgerButton;
 const StyledButton = styled(Button)`
   background-color: #F77D54;
   display: inline-block;
-  postition: absolute;
+  postition: relative;
   z-index: 9;
   order: 999;
   &:hover {

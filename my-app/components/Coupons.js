@@ -14,12 +14,7 @@ const Coupons = ({username, totalPrice, numCoupons}) => {
                 <div style={{ position: "absolute", padding: "20px", top: "10px"}}>
                     Hi {username}!
                 </div>
-                <div style={{ position: "absolute", padding: "20px", top: "58px", fontSize: "22px"}}>
-                    You have purchased {totalPrice.toFixed(2)}$ worth of food,
-                    <br/>
-                    {/*1 dollar rebate when buy 5 dollars*/}
-
-                    and {numCoupons} coupon(s) worth {(numCoupons*5).toFixed(2)}$
+                <div style={{ position: "absolute", padding: "20px", top: "58px", fontSize: "22px"}}>You have purchased {totalPrice.toFixed(2)}$ worth of food, and {numCoupons} coupon(s) worth {(numCoupons*5).toFixed(2)}$
                 </div>
 
             </CouponsInitialMenu>

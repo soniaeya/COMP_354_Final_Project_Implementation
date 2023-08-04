@@ -1,7 +1,10 @@
 import React from 'react';
 import styled from "styled-components";
 
-const Dashboard = () => {
+const Dashboard = ({setSuggestBurger}) => {
+    const addSuggestion=() =>{
+        setSuggestBurger(true);
+    }
     return (
         <StyledPageContainer>
             <Burger></Burger>
@@ -31,7 +34,7 @@ const Dashboard = () => {
                     </div>
                 </div>
             </Min>
-            <Sec style={{marginLeft: 5}}>
+            <Sec onClick={addSuggestion} style={{marginLeft: 5}}>
                 <div style={{color: "white", fontSize: 20, alignItems: "center", justifyContent: "center", display: "flex"}}>
                     <div style={{position: "relative", top: 10}}>
                         &nbsp;&nbsp;&nbsp;2<br/>SEC

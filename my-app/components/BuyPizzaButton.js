@@ -5,7 +5,7 @@ import ClearIcon from '@mui/icons-material/Clear';
 import {Box, Container, Modal, TextField, Typography} from "@mui/material";
 import BuyBurgerButton from "./BuyBurgerButton";
 import SuggestedBuyBurgerButton from "./SuggestedBuyBurgerButton";
-const BuyPizzaButton = ({setHasPizza, setCountPizza, countPizza}) => {
+const BuyPizzaButton = ({setHasPizza, setCountPizza, countPizza, setHasBurger, countBurger, setCountBurger}) => {
     const [showSuggestions, setShowSuggestions] = useState(false);
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => {
@@ -13,6 +13,15 @@ const BuyPizzaButton = ({setHasPizza, setCountPizza, countPizza}) => {
         setOpen(true);
         setCountPizza(countPizza+1);
     }
+
+    const clickBuyBurger = () => {
+        setHasBurger(true);
+        setOpen(true);
+        setCountBurger(countBurger+1);
+    }
+
+
+
     const handleClose = () => setOpen(false);
     const style = {
         position: 'absolute',
@@ -77,7 +86,7 @@ const BuyPizzaButton = ({setHasPizza, setCountPizza, countPizza}) => {
                                     <br/>
                                     <div style={{fontWeight: "bold", fontSize: 20, position: "relative"}}>Burger - 4,00$</div>
                                     <br/>
-                                    <SuggestedBuyBurgerButton >Buy Now</SuggestedBuyBurgerButton>
+                                    <SuggestedBuyBurgerButton onClick={clickBuyBurger}>Buy Now</SuggestedBuyBurgerButton>
                                 </Box>
                             </Container>
 

@@ -4,9 +4,11 @@ import Button from '@mui/material/Button';
 import ClearIcon from '@mui/icons-material/Clear';
 import {Box, Container, Modal, TextField, Typography} from "@mui/material";
 import BuyPizzaButton from "./BuyPizzaButton";
-const BuyBurgerButton = ({setHasBurger, setHasPizza, setCountPizza, setCountBurger, countBurger, countPizza}) => {
+import SuggestedBuyBurgerButton from "@/components/SuggestedBuyBurgerButton";
+const BuyBurgerButton = ({setHasBurger, setHasPizza, setCountPizza, setCountBurger, countBurger, countPizza, suggestBurger}) => {
     const [showSuggestions, setShowSuggestions] = useState(false);
     const [open, setOpen] = React.useState(false);
+
     const handleOpen = () => {
         setOpen(true);
         setHasBurger(true);
@@ -78,6 +80,19 @@ const BuyBurgerButton = ({setHasBurger, setHasPizza, setCountPizza, setCountBurg
                                         <div style={{fontWeight: "bold", fontSize: 20, position: "relative"}}>C. Pizza - 3,55$</div>
                                         <br/>
                                         <BuyPizzaButton setCountPizza={setCountPizza} countPizza={countPizza}  setHasPizza={setHasPizza}>Buy Now</BuyPizzaButton>
+                                        {suggestBurger &&
+
+                                            <SuggestBurgerDiv>
+                                                <br/>
+                                                <br/>
+                                                <br/>
+                                            <img src="/images/burger.png" alt="Description of the image" width="250px" height="250px"/>
+                                            <br/>
+                                            <div style={{fontWeight: "bold", fontSize: 20, position: "relative"}}>Burger - 4,00$</div>
+                                            <br/>
+                                            <SuggestedBuyBurgerButton setHasBurger={setHasBurger} countBurger={countBurger} setCountBurger={setCountBurger} style={{left: "20px"}} >Buy Now</SuggestedBuyBurgerButton>
+                                        </SuggestBurgerDiv>
+                                        }
                                     </Box>
                                 </Container>
 
@@ -98,11 +113,15 @@ const BuyBurgerButton = ({setHasBurger, setHasPizza, setCountPizza, setCountBurg
 };
 
 export default BuyBurgerButton;
+const SuggestBurgerDiv = styled.div`
+    height: 0px;
+  
 
+`
 const StyledButton = styled(Button)`
   background-color: #F77D54;
   display: inline-block;
-  postition: absolute;
+  postition: relative;
   z-index: 9;
   order: 999;
   top: 600px;

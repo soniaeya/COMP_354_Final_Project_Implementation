@@ -19,7 +19,7 @@ export default function Home() {
     const [numCoupons, setNumCoupons] = useState(0);
     const [showInitialMenu, setShowInitialMenu] = useState(true);
     const [showUserMenu, setShowUserMenu] = useState(false);
-
+    const [suggestBurger, setSuggestBurger] = React.useState(false);
 
     const changeNumCoupons = (totalPrice) => {
         if (totalPrice < 1){
@@ -98,10 +98,6 @@ export default function Home() {
             //change coupon state
             changeNumCoupons(totalPrice);
 
-
-
-
-
         }
         else{
             setShowCoupons(false); // When clicked, set the state to true
@@ -129,14 +125,14 @@ export default function Home() {
 
   return (
     <>
-        <BuyBurgerButton countPizza={countPizza} countBurger={countBurger} setHasPizza={setHasPizza} setHasBurger={setHasBurger} setCountBurger={setCountBurger} setCountPizza={setCountPizza}></BuyBurgerButton>
+        <BuyBurgerButton suggestBurger={suggestBurger} setSuggestBurger={setSuggestBurger} countPizza={countPizza} countBurger={countBurger} setHasPizza={setHasPizza} setHasBurger={setHasBurger} setCountBurger={setCountBurger} setCountPizza={setCountPizza}></BuyBurgerButton>
         <ShoppingCartIcon  onClick={handleClick} style={{zIndex: 999, position: "absolute", top: 30, left: 1280}}/>
         {showBasket && <BasketMenu setCountBurger={setCountBurger} setHasBurger={setHasBurger} showUserMenu={showUserMenu} setShowUserMenu={setShowUserMenu} showInitialMenu={showInitialMenu} setShowInitialMenu={setShowInitialMenu} setTotalPrice={setTotalPrice} countPizza={countPizza} countBurger={countBurger} hasPizza={hasPizza} hasBurger={hasBurger} removePizza={removePizza} removeBurger={removeBurger} username={username}/>}
         <ResponsiveAppBar showCouponMenu={showCouponMenu} changeProfileMenu={changeProfileMenu} style={{zIndex: -1}}></ResponsiveAppBar>
 
         {showCoupons && <Coupons numCoupons={numCoupons} totalPrice={totalPrice} username={username}/>}
         {showProfileMenu && <ProfileMenu setTotalPrice={setTotalPrice} setCountBurger={setCountBurger} setHasBurger={setHasBurger}  setShowUserMenu={setShowUserMenu} setShowInitialMenu={setShowInitialMenu} isloggedin={isloggedin} changeLogin={changeLogin} changeUser={changeUser}/>}
-        <Dashboard style={{zIndex: 10, position: "absolute"}}></Dashboard>
+        <Dashboard setSuggestBurger={setSuggestBurger} style={{zIndex: 10, position: "absolute"}}></Dashboard>
         <Background></Background>
 
 
