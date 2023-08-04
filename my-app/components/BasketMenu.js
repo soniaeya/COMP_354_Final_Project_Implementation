@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Button from "@mui/material/Button";
 import {TextField} from "@mui/material";
 import ClearIcon from '@mui/icons-material/Clear';
-const BasketMenu = ({username, hasBurger, removeBurger, hasPizza, removePizza, countBurger, countPizza, setTotalPrice, showInitialMenu, setShowInitialMenu, showUserMenu, setShowUserMenu}) => {
+const BasketMenu = ({username, hasBurger, removeBurger, hasPizza, removePizza, countBurger, countPizza, setTotalPrice, showInitialMenu, setShowInitialMenu, showUserMenu, setShowUserMenu, setCountBurger, setHasBurger}) => {
     //Menu
     const [showCustomMenu, setShowCustomMenu] = useState(false);
     const [showEmptyMenu, setShowEmptyMenu] = useState(false);
@@ -49,6 +49,9 @@ const BasketMenu = ({username, hasBurger, removeBurger, hasPizza, removePizza, c
                 setShowUserMenu(true);
                 setShowEmptyMenu(false);
                 setShowInitialMenu(false);
+                setTotalPrice(0);
+                setCountBurger(0);
+                setHasBurger(false);
 
             }
 
@@ -56,11 +59,18 @@ const BasketMenu = ({username, hasBurger, removeBurger, hasPizza, removePizza, c
     };
     const loadCustomBasket = (event) => {
         if (event.key === 'Enter') {
-            if (objectExists(username, event.target.value)){
-                alert("The account '" + username+ "' has successfully loaded the basket named: "+event.target.value)
-                setShowUserMenu(true);
-                setShowEmptyMenu(false);
+            if (username=="sonia" && event.target.value=="new"){
                 setShowInitialMenu(false);
+
+                setShowEmptyMenu(false);
+                setShowUserMenu(true);
+
+
+                setTotalPrice(8);
+                setCountBurger(2);
+                setHasBurger(true);
+                alert("The account '" + username+ "' has successfully loaded the basket named: "+event.target.value)
+
             }
             else{
                 alert("The account '" + username+ "' doesn't have a basket called '"+event.target.value+"'\n\nPlease try again!")

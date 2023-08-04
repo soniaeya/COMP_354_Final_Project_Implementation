@@ -39,7 +39,7 @@ const Dashboard = () => {
                 </div>
             </Sec>
             <Text style={{color: "black", fontSize: 28, alignItems: "center", justifyContent: "center", display: "flex", top: 375, left: 995, position: "absolute"}}>
-                Burger<br/>tommato, green salad,pita, ketchup, maionese, â¦.
+                Burger<br/>Tomato, green salad, pita, ketchup, mayo
             </Text>
 
 

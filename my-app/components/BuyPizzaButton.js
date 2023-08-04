@@ -3,8 +3,8 @@ import styled from "styled-components";
 import Button from '@mui/material/Button';
 import ClearIcon from '@mui/icons-material/Clear';
 import {Box, Container, Modal, TextField, Typography} from "@mui/material";
-import BuyBurgerButton from "@/components/BuyBurgerButton";
-import SuggestedBuyBurgerButton from "@/components/SuggestedBuyBurgerButton";
+import BuyBurgerButton from "./BuyBurgerButton";
+import SuggestedBuyBurgerButton from "./SuggestedBuyBurgerButton";
 const BuyPizzaButton = ({setHasPizza, setCountPizza, countPizza}) => {
     const [showSuggestions, setShowSuggestions] = useState(false);
     const [open, setOpen] = React.useState(false);

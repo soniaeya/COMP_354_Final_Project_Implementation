@@ -1,14 +1,14 @@
 
-import ResponsiveAppBar from "@/components/ResponsiveAppBar";
-import Dashboard from "@/components/Dashboard";
+import ResponsiveAppBar from "../components/ResponsiveAppBar";
+import Dashboard from "../components/Dashboard";
 
 import styled from 'styled-components';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import React, { useState } from 'react';
-import BasketMenu from "@/components/BasketMenu";
-import BuyBurgerButton from "@/components/BuyBurgerButton";
-import Coupons from "@/components/Coupons";
-import ProfileMenu from "@/components/ProfileMenu";
+import BasketMenu from "../components/BasketMenu";
+import BuyBurgerButton from "../components/BuyBurgerButton";
+import Coupons from "../components/Coupons";
+import ProfileMenu from "../components/ProfileMenu";
 export default function Home() {
     const [showBasket, setShowBasket] = useState(false);
     const [showCoupons, setShowCoupons] = useState(false);
@@ -75,9 +75,12 @@ export default function Home() {
     const changeLogin = () =>{
         if (isloggedin == false){
             setisloggedin(true); // When clicked, set the state to true
+
         }
         else{
             setisloggedin(false); // When clicked, set the state to true
+            setTotalPrice(0);
+            setNumCoupons(0);
         }
 
     }
@@ -128,11 +131,11 @@ export default function Home() {
     <>
         <BuyBurgerButton countPizza={countPizza} countBurger={countBurger} setHasPizza={setHasPizza} setHasBurger={setHasBurger} setCountBurger={setCountBurger} setCountPizza={setCountPizza}></BuyBurgerButton>
         <ShoppingCartIcon  onClick={handleClick} style={{zIndex: 999, position: "absolute", top: 30, left: 1280}}/>
-        {showBasket && <BasketMenu showUserMenu={showUserMenu} setShowUserMenu={setShowUserMenu} showInitialMenu={showInitialMenu} setShowInitialMenu={setShowInitialMenu} setTotalPrice={setTotalPrice} countPizza={countPizza} countBurger={countBurger} hasPizza={hasPizza} hasBurger={hasBurger} removePizza={removePizza} removeBurger={removeBurger} username={username}/>}
+        {showBasket && <BasketMenu setCountBurger={setCountBurger} setHasBurger={setHasBurger} showUserMenu={showUserMenu} setShowUserMenu={setShowUserMenu} showInitialMenu={showInitialMenu} setShowInitialMenu={setShowInitialMenu} setTotalPrice={setTotalPrice} countPizza={countPizza} countBurger={countBurger} hasPizza={hasPizza} hasBurger={hasBurger} removePizza={removePizza} removeBurger={removeBurger} username={username}/>}
         <ResponsiveAppBar showCouponMenu={showCouponMenu} changeProfileMenu={changeProfileMenu} style={{zIndex: -1}}></ResponsiveAppBar>
 
         {showCoupons && <Coupons numCoupons={numCoupons} totalPrice={totalPrice} username={username}/>}
-        {showProfileMenu && <ProfileMenu isloggedin={isloggedin} changeLogin={changeLogin} changeUser={changeUser}/>}
+        {showProfileMenu && <ProfileMenu setTotalPrice={setTotalPrice} setCountBurger={setCountBurger} setHasBurger={setHasBurger}  setShowUserMenu={setShowUserMenu} setShowInitialMenu={setShowInitialMenu} isloggedin={isloggedin} changeLogin={changeLogin} changeUser={changeUser}/>}
         <Dashboard style={{zIndex: 10, position: "absolute"}}></Dashboard>
         <Background></Background>
 

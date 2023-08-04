@@ -11,9 +11,7 @@ const Admin = () => {
     };
     const nameCustomBasket = (event) => {
         if (event.key === 'Enter') {
-
            alert("You have added item no."+event.target.value+" as a suggestion. ")
-
 
 
         }
@@ -64,7 +62,7 @@ const Admin = () => {
                                         Add Suggestion
                                     </Typography>
 
-                                        <StyledTextfield value={newBasketText} onChange={handleNewBasketTextChange} onKeyDown={nameCustomBasket} onKeyDown={handleClose} id="standard-basic" label="Enter item ID" variant="outlined" />
+                                        <StyledTextfield value={newBasketText} onChange={handleNewBasketTextChange} onKeyDown={nameCustomBasket} id="standard-basic" label="Enter item ID" variant="outlined" />
 
 
 

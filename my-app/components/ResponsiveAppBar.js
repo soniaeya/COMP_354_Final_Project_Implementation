@@ -5,11 +5,10 @@ import Button from '@mui/material/Button';
 
 const pages = ['About', 'Contact Us', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
-import Link from 'next/link';
 import styled from "styled-components";
 
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-
+import AccountBoxIcon from '@mui/icons-material/AccountBox';
 export default function ResponsiveAppBar({showCouponMenu, changeProfileMenu}) {
 
     const handleCouponsClick = () => {

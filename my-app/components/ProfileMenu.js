@@ -4,7 +4,7 @@ import Button from "@mui/material/Button";
 import {Box, Checkbox, Container, FormControlLabel, Grid, Modal, TextField, Typography} from "@mui/material";
 import Link from "next/link";
 
-const ProfileMenu = ({isloggedin, changeLogin, changeUser}) => {
+const ProfileMenu = ({isloggedin, changeLogin, changeUser, setShowInitialMenu, setShowUserMenu, setTotalPrice, setCountBurger, setHasBurger}) => {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -44,6 +44,11 @@ const ProfileMenu = ({isloggedin, changeLogin, changeUser}) => {
     const handleLogout = (event) => {
         changeUser("guest");
         changeLogin(false);
+        setShowInitialMenu(true);
+        setShowUserMenu(false);
+        setTotalPrice(0);
+        setCountBurger(0);
+        setHasBurger(false);
         alert("you have successfully logged out!")
 
     };
@@ -78,7 +83,7 @@ const ProfileMenu = ({isloggedin, changeLogin, changeUser}) => {
                                             Sign in
                                         </Typography>
                                         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-                                            <TextField
+                                            <StyledTextfield
                                                 margin="normal"
                                                 required
                                                 fullWidth
@@ -88,7 +93,7 @@ const ProfileMenu = ({isloggedin, changeLogin, changeUser}) => {
                                                 autoComplete="user"
                                                 autoFocus
                                             />
-                                            <TextField
+                                            <StyledTextfield
                                                 margin="normal"
                                                 required
                                                 fullWidth
